@@ -40,7 +40,7 @@ class Add(Resource):
         y = int(y)
         ret = x + y
         retMap = {
-            "Sum": ret,
+            "Result": ret,
             "Status Code": 200
         }
         return jsonify(retMap)
@@ -65,7 +65,7 @@ class Subtract(Resource):
         y = int(y)
         ret = x - y
         retMap = {
-            "Sum": ret,
+            "Result": ret,
             "Status Code": 200
         }
         return jsonify(retMap)
@@ -90,7 +90,7 @@ class Multiply(Resource):
         y = int(y)
         ret = x * y
         retMap = {
-            "Sum": ret,
+            "Result": ret,
             "Status Code": 200
         }
         return jsonify(retMap)
@@ -115,7 +115,7 @@ class Divide(Resource):
         y = int(y)
         ret = x * 1.0 / y
         retMap = {
-            "Sum": ret,
+            "Result": ret,
             "Status Code": 200
         }
         return jsonify(retMap)
@@ -127,10 +127,10 @@ api.add_resource(Multiply, "/multiply")
 api.add_resource(Divide, "/divide")
 
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def hello_world():
-    return "Hello, World!"
+    return "Simple RESTful API"
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
